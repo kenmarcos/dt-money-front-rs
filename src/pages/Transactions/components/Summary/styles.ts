@@ -13,14 +13,14 @@ export const SummaryContainer = styled.section`
 `;
 
 interface SummaryCardProps {
-  variant?: "green";
+  $variant?: "green";
 }
 
 export const SummaryCard = styled.div<SummaryCardProps>`
   padding: 1.5rem;
   border-radius: 6px;
   background-color: ${(props) =>
-    props.variant === "green"
+    props.$variant === "green"
       ? props.theme.colors["green-700"]
       : props.theme.colors["gray-600"]};
   min-width: 17.5rem;

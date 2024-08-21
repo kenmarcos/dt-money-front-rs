@@ -19,7 +19,7 @@ export const Transactions = () => {
             <tr>
               <td>Desenvolvimento de site</td>
               <td>
-                <PriceHighlight variant="income">R$ 17.000,00</PriceHighlight>
+                <PriceHighlight $variant="income">R$ 17.000,00</PriceHighlight>
               </td>
               <td>Venda</td>
               <td>13/04/2022</td>
@@ -28,7 +28,7 @@ export const Transactions = () => {
             <tr>
               <td>Desenvolvimento de site</td>
               <td>
-                <PriceHighlight variant="outcome">
+                <PriceHighlight $variant="outcome">
                   - R$ 17.000,00
                 </PriceHighlight>
               </td>
@@ -39,7 +39,7 @@ export const Transactions = () => {
             <tr>
               <td>Desenvolvimento de site</td>
               <td>
-                <PriceHighlight variant="income">R$ 17.000,00</PriceHighlight>
+                <PriceHighlight $variant="income">R$ 17.000,00</PriceHighlight>
               </td>
               <td>Venda</td>
               <td>13/04/2022</td>
@@ -48,7 +48,7 @@ export const Transactions = () => {
             <tr>
               <td>Desenvolvimento de site</td>
               <td>
-                <PriceHighlight variant="income">R$ 17.000,00</PriceHighlight>
+                <PriceHighlight $variant="income">R$ 17.000,00</PriceHighlight>
               </td>
               <td>Venda</td>
               <td>13/04/2022</td>
@@ -57,7 +57,7 @@ export const Transactions = () => {
             <tr>
               <td>Desenvolvimento de site</td>
               <td>
-                <PriceHighlight variant="income">R$ 17.000,00</PriceHighlight>
+                <PriceHighlight $variant="income">R$ 17.000,00</PriceHighlight>
               </td>
               <td>Venda</td>
               <td>13/04/2022</td>
