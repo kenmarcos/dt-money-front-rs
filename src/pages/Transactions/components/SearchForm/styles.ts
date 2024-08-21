@@ -1,10 +1,6 @@
 import styled from "styled-components";
 
 export const SearchFormContainer = styled.form`
-  max-width: 1120px;
-  margin: 2rem auto 0;
-  padding: 0 1.5rem;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
