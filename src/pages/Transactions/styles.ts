@@ -9,26 +9,44 @@ export const TransactionsContainer = styled.main`
 
 export const TransactionsTable = styled.table`
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 0 0.5rem;
   margin-top: 1.5rem;
 
   tr {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     background-color: ${(props) => props.theme.colors["gray-700"]};
+    border-radius: 6px;
+
+    & + tr {
+      margin-top: 1rem;
+    }
+
+    @media (width > 640px) {
+      flex-direction: row;
+      align-items: center;
+    }
   }
 
   td {
     padding: 1.25rem 2rem;
 
     &:first-child {
-      width: 50%;
-      border-top-left-radius: 6px;
-      border-bottom-left-radius: 6px;
+      @media (width > 640px) {
+        width: 50%;
+      }
+    }
+
+    &:nth-child(2) {
+      @media (width > 640px) {
+        flex: 1;
+      }
     }
 
     &:last-child {
-      border-top-right-radius: 6px;
-      border-bottom-right-radius: 6px;
+      @media (width > 640px) {
+        width: 30%;
+      }
     }
   }
 `;
@@ -42,4 +60,35 @@ export const PriceHighlight = styled.span<PriceHighlightProps>`
     props.$variant === "income"
       ? props.theme.colors["green-300"]
       : props.theme.colors["red-300"]};
+  font-weight: bold;
+  font-size: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 200px;
+
+  @media (width > 640px) {
+    font-size: 1rem;
+    width: 150px;
+  }
+`;
+
+export const RowGroup = styled.td`
+  display: flex;
+  justify-content: space-between;
+  color: ${(props) => props.theme.colors["gray-500"]};
+  gap: 2rem;
+
+  > div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    @media (width > 640px) {
+      svg {
+        display: none;
+      }
+    }
+  }
 `;
