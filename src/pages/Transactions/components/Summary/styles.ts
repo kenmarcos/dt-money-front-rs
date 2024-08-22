@@ -36,5 +36,11 @@ export const SummaryCard = styled.div<SummaryCardProps>`
     color: ${(props) => props.theme.colors["gray-100"]};
     font-size: 2rem;
     font-weight: bold;
+    margin-top: 0.75rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    max-width: 100%;
   }
 `;

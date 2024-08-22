@@ -21,7 +21,9 @@ export const Summary = () => {
           <ArrowCircleDown size={32} color="#F75A68" />
         </header>
 
-        <strong>R$ 17.400,00</strong>
+        <strong title={"R$ 17.4003243242343243,00"}>
+          R$ 17.4003243242343243,00
+        </strong>
       </SummaryCard>
 
       <SummaryCard $variant="green">
