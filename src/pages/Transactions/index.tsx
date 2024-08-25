@@ -7,8 +7,32 @@ import {
   TransactionsTable,
 } from "./styles";
 import { CalendarBlank, TagSimple } from "phosphor-react";
+import { useEffect, useState } from "react";
+import { api } from "@/lib/axios";
+import { dateFormatter, priceFormatter } from "@/utils/formatter";
+
+interface Transaction {
+  id: number;
+  description: string;
+  type: "income" | "outcome";
+  price: number;
+  category: string;
+  createdAt: string;
+}
 
 export const Transactions = () => {
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
+
+  const fetchTransactions = async () => {
+    const response = await api.get("/transactions");
+
+    setTransactions(response.data);
+  };
+
+  useEffect(() => {
+    fetchTransactions();
+  }, []);
+
   return (
     <>
       <Summary />
@@ -18,41 +42,27 @@ export const Transactions = () => {
 
         <TransactionsTable>
           <tbody>
-            <tr>
-              <td>Desenvolvimento de site</td>
-              <td>
-                <PriceHighlight $variant="income">R$ 17.000,00</PriceHighlight>
-              </td>
-              <RowGroup>
-                <div>
-                  <TagSimple size={16} />
-                  Venda
-                </div>
-                <div>
-                  <CalendarBlank size={16} />
-                  13/04/2022
-                </div>
-              </RowGroup>
-            </tr>
-
-            <tr>
-              <td>Desenvolvimento de site</td>
-              <td>
-                <PriceHighlight $variant="outcome">
-                  - R$ 17.0042343243423420,00
-                </PriceHighlight>
-              </td>
-              <RowGroup>
-                <div>
-                  <TagSimple size={16} />
-                  Venda
-                </div>
-                <div>
-                  <CalendarBlank size={16} />
-                  13/04/2022
-                </div>
-              </RowGroup>
-            </tr>
+            {transactions.map((transaction) => (
+              <tr key={transaction.id}>
+                <td>{transaction.description}</td>
+                <td>
+                  <PriceHighlight $variant={transaction.type}>
+                    {transaction.type === "outcome" && "- "}
+                    {priceFormatter.format(transaction.price)}
+                  </PriceHighlight>
+                </td>
+                <RowGroup>
+                  <div>
+                    <TagSimple size={16} />
+                    {transaction.category}
+                  </div>
+                  <div>
+                    <CalendarBlank size={16} />
+                    {dateFormatter.format(new Date(transaction.createdAt))}
+                  </div>
+                </RowGroup>
+              </tr>
+            ))}
           </tbody>
         </TransactionsTable>
       </TransactionsContainer>
