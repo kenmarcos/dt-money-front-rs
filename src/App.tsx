@@ -3,6 +3,7 @@ import { defaultTheme } from "./styles/themes/default";
 import { GlobalStyle } from "./styles/global";
 import { Header } from "./components/Header";
 import { Transactions } from "./pages/Transactions";
+import { TransactionProvider } from "./contexts/TransactionContext";
 
 function App() {
   return (
@@ -10,7 +11,9 @@ function App() {
       <GlobalStyle />
       <Header />
 
-      <Transactions />
+      <TransactionProvider>
+        <Transactions />
+      </TransactionProvider>
     </ThemeProvider>
   );
 }

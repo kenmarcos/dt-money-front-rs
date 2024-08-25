@@ -7,31 +7,12 @@ import {
   TransactionsTable,
 } from "./styles";
 import { CalendarBlank, TagSimple } from "phosphor-react";
-import { useEffect, useState } from "react";
-import { api } from "@/lib/axios";
+import { useContext } from "react";
 import { dateFormatter, priceFormatter } from "@/utils/formatter";
-
-interface Transaction {
-  id: number;
-  description: string;
-  type: "income" | "outcome";
-  price: number;
-  category: string;
-  createdAt: string;
-}
+import { TransactionContext } from "@/contexts/TransactionContext";
 
 export const Transactions = () => {
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
-
-  const fetchTransactions = async () => {
-    const response = await api.get("/transactions");
-
-    setTransactions(response.data);
-  };
-
-  useEffect(() => {
-    fetchTransactions();
-  }, []);
+  const { transactions } = useContext(TransactionContext);
 
   return (
     <>
@@ -42,7 +23,7 @@ export const Transactions = () => {
 
         <TransactionsTable>
           <tbody>
-            {transactions.map((transaction) => (
+            {transactions?.map((transaction) => (
               <tr key={transaction.id}>
                 <td>{transaction.description}</td>
                 <td>
