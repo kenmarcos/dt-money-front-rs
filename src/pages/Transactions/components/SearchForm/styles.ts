@@ -18,6 +18,10 @@ export const SearchFormContainer = styled.form`
     &::placeholder {
       color: ${(props) => props.theme.colors["gray-500"]};
     }
+
+    &::-webkit-search-cancel-button {
+      cursor: pointer;
+    }
   }
 
   button {

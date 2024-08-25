@@ -12,6 +12,8 @@ interface Transaction {
 
 interface TransactionContextData {
   transactions: Transaction[];
+
+  fetchTransactions: (query?: string) => Promise<void>;
 }
 
 export const TransactionContext = createContext({} as TransactionContextData);
@@ -23,8 +25,13 @@ interface TransactionProviderProps {
 export const TransactionProvider = ({ children }: TransactionProviderProps) => {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
 
-  const fetchTransactions = async () => {
-    const response = await api.get("/transactions");
+  const fetchTransactions = async (query?: string) => {
+    const response = await api.get("/transactions", {
+      params: {
+        _sort: "-createdAt", // ordenar por data de criação em ordem decrescente
+        q: query,
+      },
+    });
 
     setTransactions(response.data);
   };
@@ -34,7 +41,7 @@ export const TransactionProvider = ({ children }: TransactionProviderProps) => {
   }, []);
 
   return (
-    <TransactionContext.Provider value={{ transactions }}>
+    <TransactionContext.Provider value={{ transactions, fetchTransactions }}>
       {children}
     </TransactionContext.Provider>
   );
