@@ -23,6 +23,14 @@
       "type": "outcome",
       "createdAt": "2024-08-26T02:28:51.260Z",
       "id": 3
+    },
+    {
+      "description": "Livro antigo",
+      "price": 30.55,
+      "category": "Venda",
+      "type": "income",
+      "createdAt": "2024-08-26T16:18:10.401Z",
+      "id": 4
     }
   ]
 }
