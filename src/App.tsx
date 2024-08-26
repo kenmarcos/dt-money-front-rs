@@ -9,9 +9,9 @@ function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle />
-      <Header />
-
       <TransactionProvider>
+        <Header />
+
         <Transactions />
       </TransactionProvider>
     </ThemeProvider>

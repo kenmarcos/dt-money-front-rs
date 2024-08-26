@@ -114,3 +114,11 @@ export const TransactionTypeButton = styled(
         : props.theme.colors["red-300"]};
   }
 `;
+
+export const ErrorMessage = styled.span`
+  color: ${(props) => props.theme.colors["red-500"]};
+  font-weight: bold;
+  font-size: 0.75rem;
+  display: inline-block;
+  margin-top: 0.5rem;
+`;
